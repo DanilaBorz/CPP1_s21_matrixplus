@@ -1,9 +1,9 @@
-#include "s21_matrix_oop.h"
 #include "gtest/gtest.h"
+#include "s21_matrix_oop.h"
 
 // Тестовый класс для удобства
 class S21MatrixTest : public ::testing::Test {
-protected:
+ protected:
   void SetUp() override {
     // Инициализация тестовой матрицы 2x2
     matrix_2x2 = S21Matrix(2, 2);
@@ -29,7 +29,7 @@ TEST_F(S21MatrixTest, Determinant3x3) {
   m(2, 1) = 8.0;
   m(2, 2) = 9.0;
   double det = m.Determinant();
-  EXPECT_NEAR(det, 0.0, 1e-7); // Определитель равен 0
+  EXPECT_NEAR(det, 0.0, 1e-7);  // Определитель равен 0
 }
 
 // Тест Determinant для матрицы 4x4
@@ -52,7 +52,7 @@ TEST_F(S21MatrixTest, Determinant4x4) {
   m(3, 2) = 15.0;
   m(3, 3) = 16.0;
   double det = m.Determinant();
-  EXPECT_NEAR(det, 0.0, 1e-7); // Определитель равен 0
+  EXPECT_NEAR(det, 0.0, 1e-7);  // Определитель равен 0
 }
 
 // Тест конструктора по умолчанию
@@ -69,7 +69,7 @@ TEST(S21MatrixTestParam, ParamConstructor) {
   EXPECT_EQ(m.GetCols(), 4);
   for (int i = 0; i < 3; ++i) {
     for (int j = 0; j < 4; ++j) {
-      EXPECT_EQ(m(i, j), 0.0); // Проверка инициализации нулями
+      EXPECT_EQ(m(i, j), 0.0);  // Проверка инициализации нулями
     }
   }
 }
@@ -101,7 +101,7 @@ TEST(S21MatrixTestMove, MoveConstructor) {
   EXPECT_EQ(m2.GetRows(), 2);
   EXPECT_EQ(m2.GetCols(), 2);
   EXPECT_EQ(m2(0, 0), 1.0);
-  EXPECT_EQ(m1.GetRows(), 0); // Проверка, что m1 обнулился
+  EXPECT_EQ(m1.GetRows(), 0);  // Проверка, что m1 обнулился
   EXPECT_EQ(m1.GetCols(), 0);
 }
 
@@ -162,10 +162,10 @@ TEST_F(S21MatrixTest, MulMatrix) {
   S21Matrix m1 = matrix_2x2;
   S21Matrix m2 = matrix_2x2;
   m1.MulMatrix(m2);
-  EXPECT_EQ(m1(0, 0), 7.0);  // 1*1 + 2*3
-  EXPECT_EQ(m1(0, 1), 10.0); // 1*2 + 2*4
-  EXPECT_EQ(m1(1, 0), 15.0); // 3*1 + 4*3
-  EXPECT_EQ(m1(1, 1), 22.0); // 3*2 + 4*4
+  EXPECT_EQ(m1(0, 0), 7.0);   // 1*1 + 2*3
+  EXPECT_EQ(m1(0, 1), 10.0);  // 1*2 + 2*4
+  EXPECT_EQ(m1(1, 0), 15.0);  // 3*1 + 4*3
+  EXPECT_EQ(m1(1, 1), 22.0);  // 3*2 + 4*4
 }
 
 TEST_F(S21MatrixTest, MulMatrixException) {
@@ -189,7 +189,7 @@ TEST_F(S21MatrixTest, Transpose) {
 TEST_F(S21MatrixTest, Determinant) {
   S21Matrix m1 = matrix_2x2;
   double det = m1.Determinant();
-  EXPECT_NEAR(det, -2.0, 1e-7); // 1*4 - 2*3 = -2
+  EXPECT_NEAR(det, -2.0, 1e-7);  // 1*4 - 2*3 = -2
 }
 
 TEST_F(S21MatrixTest, DeterminantException) {
@@ -227,7 +227,7 @@ TEST_F(S21MatrixTest, InverseMatrixException) {
   m1(0, 0) = 1.0;
   m1(0, 1) = 1.0;
   m1(1, 0) = 1.0;
-  m1(1, 1) = 1.0; // det = 0
+  m1(1, 1) = 1.0;  // det = 0
   EXPECT_THROW(m1.InverseMatrix(), std::logic_error);
 }
 
@@ -351,7 +351,7 @@ TEST_F(S21MatrixTest, SetRowsIncrease) {
   EXPECT_EQ(m1.GetRows(), 3);
   EXPECT_EQ(m1.GetCols(), 2);
   EXPECT_EQ(m1(0, 0), 1.0);
-  EXPECT_EQ(m1(2, 0), 0.0); // Новые элементы заполнены нулями
+  EXPECT_EQ(m1(2, 0), 0.0);  // Новые элементы заполнены нулями
 }
 
 TEST_F(S21MatrixTest, SetRowsDecrease) {
@@ -370,7 +370,7 @@ TEST_F(S21MatrixTest, SetColsIncrease) {
   EXPECT_EQ(m1.GetRows(), 2);
   EXPECT_EQ(m1.GetCols(), 3);
   EXPECT_EQ(m1(0, 0), 1.0);
-  EXPECT_EQ(m1(0, 2), 0.0); // Новые элементы заполнены нулями
+  EXPECT_EQ(m1(0, 2), 0.0);  // Новые элементы заполнены нулями
 }
 
 TEST_F(S21MatrixTest, SetColsDecrease) {
@@ -390,7 +390,7 @@ TEST_F(S21MatrixTest, SetRowsColsException) {
 // Тест const оператора () - доступ к элементам константной матрицы
 TEST_F(S21MatrixTest, ConstOperatorIndex) {
   const S21Matrix &const_matrix =
-      matrix_2x2; // Создаем константную ссылку на матрицу
+      matrix_2x2;  // Создаем константную ссылку на матрицу
 
   // Проверяем чтение элементов
   EXPECT_EQ(const_matrix(0, 0), 1.0);
@@ -408,13 +408,14 @@ TEST_F(S21MatrixTest, ConstOperatorIndex) {
 TEST_F(S21MatrixTest, ConstOperatorIndexException) {
   const S21Matrix &const_matrix = matrix_2x2;
 
-  EXPECT_THROW(const_matrix(2, 0), std::out_of_range); // Выход за границы строк
+  EXPECT_THROW(const_matrix(2, 0),
+               std::out_of_range);  // Выход за границы строк
   EXPECT_THROW(const_matrix(-1, 1),
-               std::out_of_range); // Отрицательный индекс строки
+               std::out_of_range);  // Отрицательный индекс строки
   EXPECT_THROW(const_matrix(0, 2),
-               std::out_of_range); // Выход за границы столбцов
+               std::out_of_range);  // Выход за границы столбцов
   EXPECT_THROW(const_matrix(0, -1),
-               std::out_of_range); // Отрицательный индекс столбца
+               std::out_of_range);  // Отрицательный индекс столбца
 }
 
 int main(int argc, char **argv) {

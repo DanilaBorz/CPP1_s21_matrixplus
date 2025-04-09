@@ -129,8 +129,7 @@ S21Matrix S21Matrix::CreateMinorMatrix(int exclude_row, int exclude_col) const {
 }
 
 double S21Matrix::Determinant() const {
-  if (rows_ != cols_)
-    throw std::logic_error("The matrix isn't square");
+  if (rows_ != cols_) throw std::logic_error("The matrix isn't square");
   if (rows_ == 1) {
     return matrix_[0][0];
   }

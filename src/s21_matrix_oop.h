@@ -6,12 +6,12 @@
 #include <utility>
 
 class S21Matrix {
-private:
+ private:
   int rows_;
   int cols_;
   double **matrix_;
 
-public:
+ public:
   S21Matrix();
   S21Matrix(int rows, int cols);
   S21Matrix(const S21Matrix &other);
@@ -43,4 +43,5 @@ public:
   void SetRows(int new_rows);
   void SetCols(int new_cols);
 };
+
 #endif
